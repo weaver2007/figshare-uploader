@@ -8,7 +8,7 @@ To clean: `scons -c`
 
 ## Building on Linux
 
-You need scons and xlnt installed.
+You need scons and xlnt installed.  You also need libspdlog-dev.
 
 To install scons, use `pip3 install scons`, or use your distro's copy of scons.
 The build process was tested with SCons versions 2.5.1 and 3.0.1.

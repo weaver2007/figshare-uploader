@@ -1,6 +1,7 @@
 #include <iostream>
 #include <QApplication>
 #include <QThread>
+#include <spdlog/spdlog.h>
 #include "driver.hh"
 #include "figshare_gateway.hh"
 #include "part_preparer.hh"
@@ -12,7 +13,10 @@
 #include "token_store.hh"
 #include "group_mapper.hh"
 
+
 int main(int argc, char **argv) {
+    logging::log->info("Starting up: {}", 42);
+    
     QApplication app(argc, argv);
 
     // Token store is spooky action at a distance that's used to thread the
