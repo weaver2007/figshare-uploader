@@ -44,6 +44,8 @@ class CustomFieldSet {
 public:
     CustomFieldSet() { }
 
+    void add(unique_ptr<CustomFieldDatum> datum);
+
     QJsonObject render() const;
 private:
     vector<unique_ptr<CustomFieldDatum>> content;
