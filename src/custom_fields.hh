@@ -46,8 +46,7 @@ public:
 
     QJsonObject render() const;
 private:
-// disable
-//    vector<unique_ptr<CustomFieldDatum>> content;
+    vector<unique_ptr<CustomFieldDatum>> content;
 };
 
 #endif /* CUSTOM_FIELDS_HH */

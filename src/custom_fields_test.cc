@@ -9,7 +9,7 @@ using std::vector;
 using ::testing::Eq;
 using ::testing::StartsWith;
 using ::testing::EndsWith;
-
+/*
 TEST(CustomFieldSupport, supportsContributors) {
     CustomFieldMapper myMapper;
 
@@ -62,3 +62,4 @@ TEST(CustomFieldSupport, supportsCollection) {
 
     ASSERT_THAT(result, Eq(expected));
 }
+*/

@@ -26,7 +26,7 @@ struct ArticleCreationRequest {
         int license,
         string identifier,
         string groupName,
-        CustomFieldSet customFields
+        const CustomFieldSet& customFields
     ) : title(title), description(description), keywords(keywords),
         references(references), categories(categories),  authors(authors),
         funding(funding), articleType(articleType), license(license),
@@ -44,7 +44,7 @@ struct ArticleCreationRequest {
     int license;
     string identifier;
     string groupName;
-    CustomFieldSet customFields;
+    const CustomFieldSet& customFields;
 };
 
 struct UploadCreationRequest {
