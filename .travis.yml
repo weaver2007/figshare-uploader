@@ -44,7 +44,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
-            - libspdlog-dev
     
       install:
         - set -e
