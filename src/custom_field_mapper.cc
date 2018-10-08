@@ -1,9 +1,10 @@
+#include <iostream>
 #include "custom_field_mapper.hh"
 #include "column_mapping.hh"
 #include "utility.hh"
-#include <iostream>
+#include "custom_fields.hh"
 
-map<string, string> CustomFieldMapper::mapCustomFields(const vector<string> excelRow) {
+vector<CustomFieldDatum> CustomFieldMapper::mapCustomFields(const vector<string> excelRow) {
     for (auto col: excelRow) {
         std::cout << col << std::endl;
     }
