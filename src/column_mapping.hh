@@ -12,9 +12,11 @@
 
 #include <string>
 #include <map>
+#include <vector>
 
 using std::string;
 using std::map;
+using std::vector;
 
 namespace column_mapping {
     const int CREATOR = 9;
@@ -39,6 +41,23 @@ namespace column_mapping {
     const int MAX_FIELD = 24;
     const string MINIMUM_COLUMN = "A";
     const string MAXIMUM_COLUMN = "X";
+
+    enum class FieldEncoder { STRING, LIST };
+
+    struct CustomFieldSpecification {
+        CustomFieldSpecification(
+            string name, int position, FieldEncoder type
+        ) : name(name), position(position), type(type) { 
+        }
+
+        string name;
+        int position;
+        FieldEncoder type;
+    };
+
+    const vector<CustomFieldSpecification> CUSTOM_FIELDS_2 = {
+        { "Creator", CREATOR, FieldEncoder::LIST }
+    };
 
     const map<string, int> CUSTOM_FIELDS = {
         {"Creator", CREATOR},

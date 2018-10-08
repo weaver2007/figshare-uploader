@@ -9,8 +9,11 @@ vector<CustomFieldDatum> CustomFieldMapper::mapCustomFields(const vector<string>
         std::cout << col << std::endl;
     }
 
-    map<string, string> result;
+    vector<CustomFieldDatum> result;
 
+
+    // This now becomes a vec->vec transformation with a conditional on 
+    // the field encoder enum.
     for (
         auto iter = column_mapping::CUSTOM_FIELDS.begin();
         iter != column_mapping::CUSTOM_FIELDS.end();
