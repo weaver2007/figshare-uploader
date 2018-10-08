@@ -11,6 +11,7 @@
 #include "article_mapper.hh"
 #include "utility.hh"
 #include "column_mapping.hh"
+#include "custom_fields.hh"
 
 using nonstd::optional;
 using nonstd::nullopt;
@@ -60,7 +61,7 @@ ArticleCreationRequest ArticleMapperImpl::mapFromExcel(const vector<string> exce
 
     string identifierSheetVal = excelRow.at(column_mapping::IDENTIFIER);
 
-    map<string, string> customFields = customFieldMapper.mapCustomFields(excelRow);
+    vector<CustomFieldDatum> customFields = customFieldMapper.mapCustomFields(excelRow);
     
     string groupName = excelRow.at(column_mapping::GROUP_NAME);
 

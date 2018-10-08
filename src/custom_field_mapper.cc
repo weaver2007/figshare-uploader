@@ -14,11 +14,7 @@ vector<CustomFieldDatum> CustomFieldMapper::mapCustomFields(const vector<string>
 
     // This now becomes a vec->vec transformation with a conditional on 
     // the field encoder enum.
-    for (
-        auto iter = column_mapping::CUSTOM_FIELDS.begin();
-        iter != column_mapping::CUSTOM_FIELDS.end();
-        iter++
-    ) {
+    for (CustomFieldSpecification s: column_mapping::CUSTOM_FIELDS) {
         string apiCustomFieldName = iter->first;
         int rowIndex = iter->second;
 
