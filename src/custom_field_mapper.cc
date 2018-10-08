@@ -7,6 +7,7 @@
 
 using std::make_unique;
 using std::unique_ptr;
+using std::move;
 using column_mapping::CustomFieldSpecification;
 using column_mapping::FieldEncoder;;
 
@@ -35,7 +36,7 @@ CustomFieldSet CustomFieldMapper::mapCustomFields(const vector<string> excelRow)
             throw std::runtime_error("unknown field encoder type");
         }
 
-        result.add(datum);
+        result.add(move(datum));
     }
 
 
