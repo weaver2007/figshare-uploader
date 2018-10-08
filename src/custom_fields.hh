@@ -45,6 +45,7 @@ public:
     CustomFieldSet() { }
 
     void add(unique_ptr<CustomFieldDatum> datum);
+    int size() const;
 
     QJsonObject render() const;
 private:

@@ -1,4 +1,5 @@
 #include <map>
+#include <iostream>
 #include <QString>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -62,6 +63,8 @@ ArticleCreationRequest ArticleMapperImpl::mapFromExcel(const vector<string> exce
     string identifierSheetVal = excelRow.at(column_mapping::IDENTIFIER);
 
     CustomFieldSet customFields = customFieldMapper.mapCustomFields(excelRow);
+
+    std::cout << "size of custom field set in article mapper is " << customFields.size() << std::endl;
     
     string groupName = excelRow.at(column_mapping::GROUP_NAME);
 
@@ -69,6 +72,9 @@ ArticleCreationRequest ArticleMapperImpl::mapFromExcel(const vector<string> exce
         title, description, keywords, references, categories, authors,
         funding, articleType, license, identifierSheetVal, groupName, customFields
     );
+
+    std::cout << "size of custom field set in request is " << result.customFields.size() << std::endl;
+
 
     // This will use the copy constructor for ArticleCreationRequest.
     return result;
@@ -129,6 +135,7 @@ string ArticleMapperImpl::mapToFigshare(const ArticleCreationRequest request) {
     object.insert("categories", categoriesVal);
 
     // Copy custom fields objects into JSON document
+    std::cout << "size of custom field set in to-figshare mapper is " << request.customFields.size() << std::endl;
     QJsonObject customFieldObject = request.customFields.render();
     object.insert("custom_fields", customFieldObject);
 

@@ -1,4 +1,6 @@
 #include <memory>
+#include <iostream>
+#include "logging.hh"
 #include "custom_fields.hh"
 
 using std::move;
@@ -24,12 +26,14 @@ string ListCustomFieldDatum::getKey() {
 QJsonObject CustomFieldSet::render() const {
     QJsonObject result;
 
-    for (auto const& d: content) {
-        auto jsonKey = QString::fromStdString(d->getKey());
-        auto jsonValue = QString::fromStdString(d->toJson());
+    std::cout << "size of content is " <<  result.size() << std::endl;
 
-        result.insert(jsonKey, jsonValue);
-    }
+    // for (auto const& d: content) {
+    //     auto jsonKey = QString::fromStdString(d->getKey());
+    //     auto jsonValue = QString::fromStdString(d->toJson());
+
+    //     result.insert(jsonKey, jsonValue);
+    // }
 
     return result;
 }
@@ -37,4 +41,8 @@ QJsonObject CustomFieldSet::render() const {
 
 void CustomFieldSet::add(unique_ptr<CustomFieldDatum> datum) {
     content.push_back(move(datum));
+}
+
+int CustomFieldSet::size() const {
+    return content.size();
 }

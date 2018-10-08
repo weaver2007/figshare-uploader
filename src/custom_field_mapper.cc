@@ -37,6 +37,7 @@ CustomFieldSet CustomFieldMapper::mapCustomFields(const vector<string> excelRow)
         }
 
         result.add(move(datum));
+        std::cout << "size is now " << result.size() << std::endl;
     }
 
 

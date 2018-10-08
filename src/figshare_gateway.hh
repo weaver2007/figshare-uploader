@@ -16,7 +16,7 @@
 class FigshareGateway {
 public:
     virtual ArticleCreationResponse createArticle(
-        ArticleCreationRequest request
+        const ArticleCreationRequest& request
     ) = 0;
 
     virtual UploadCreationResponse createUpload(
@@ -48,7 +48,7 @@ public:
           categoryMapper(categoryMapper), groupMapper(groupMapper) { }
 
     // These methods form the official Figshare API
-    ArticleCreationResponse createArticle(ArticleCreationRequest request);
+    ArticleCreationResponse createArticle(const ArticleCreationRequest& request);
     UploadCreationResponse createUpload(
         string articleUrl,
         UploadCreationRequest request

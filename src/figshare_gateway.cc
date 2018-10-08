@@ -20,13 +20,16 @@ using std::string;
 // `Authorization: token <blah>`
 
 ArticleCreationResponse HttpFigshareGateway::createArticle(
-    ArticleCreationRequest request
+    const ArticleCreationRequest& request
 ) {
     ArticleTypeMapper typeMapper;
     CustomFieldMapper customFieldMapper;
     ArticleMapperImpl mapper(typeMapper, categoryMapper, customFieldMapper, groupMapper);
 
+    std::cout << "size in figshare gateway is " << request.customFields.size() << std::endl;
+
     const string url = "https://api.figshare.com/v2/account/articles";
+    
     const string payload = mapper.mapToFigshare(request);
     
     for (auto ref : request.references) {

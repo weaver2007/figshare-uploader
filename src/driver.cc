@@ -19,7 +19,9 @@ void Driver::handleRow(const ExcelRow row, const string inputPath) const {
     log("Handling row.");
 
     ArticleCreationRequest acr = articleMapper->mapFromExcel(row.rowData);
+    std::cout << "size in driver1 is " << acr.customFields.size() << std::endl;
     ArticleCreationResponse response = gateway->createArticle(acr);
+    std::cout << "size in driver2 is " << acr.customFields.size() << std::endl;
     string stemArticle = response.location;
     ArticleGetResponse articleData = gateway->getArticle(stemArticle);
 
