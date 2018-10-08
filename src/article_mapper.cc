@@ -61,7 +61,7 @@ ArticleCreationRequest ArticleMapperImpl::mapFromExcel(const vector<string> exce
 
     string identifierSheetVal = excelRow.at(column_mapping::IDENTIFIER);
 
-    CustomFields customFields = customFieldMapper.mapCustomFields(excelRow);
+    CustomFieldSet customFields = customFieldMapper.mapCustomFields(excelRow);
     
     string groupName = excelRow.at(column_mapping::GROUP_NAME);
 
@@ -129,12 +129,7 @@ string ArticleMapperImpl::mapToFigshare(const ArticleCreationRequest request) {
     object.insert("categories", categoriesVal);
 
     // Copy custom fields objects into JSON document
-    QJsonObject customFieldObject;
-    for (auto const& d: request.customFields) {
-        auto jsonKey = QString::fromStdString(d->getKey());
-        auto jsonValue = QString::fromStdString(d->toJson());
-        customFieldObject.insert(jsonKey, jsonValue);
-    }
+    QJsonObject customFieldObject = request.customFields.render();
     object.insert("custom_fields", customFieldObject);
 
     object.insert("group_id", groupMapper->getGroupIdByName(request.groupName));

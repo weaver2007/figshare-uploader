@@ -12,7 +12,7 @@ using std::vector;
 
 class CustomFieldMapper {
 public:
-    CustomFields mapCustomFields(const vector<string> excelRow);
+    CustomFieldSet mapCustomFields(const vector<string> excelRow);
 };
 
 #endif // CUSTOM_FIELD_MAPPER_HH

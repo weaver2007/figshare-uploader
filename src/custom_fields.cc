@@ -16,3 +16,18 @@ string ListCustomFieldDatum::toJson() {
 string ListCustomFieldDatum::getKey() {
     return "some key for a list datum";
 }
+
+
+QJsonObject CustomFieldSet::render() const {
+    QJsonObject result;
+
+    for (auto const& d: content) {
+        // auto jsonKey = QString::fromStdString(d->getKey());
+        // auto jsonValue = QString::fromStdString(d->toJson());
+        // customFieldObject.insert(jsonKey, jsonValue);
+    }
+
+    return result;
+}
+
+

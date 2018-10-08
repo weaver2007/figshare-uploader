@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <QJsonObject>
+#include "column_mapping.hh"
 
 using std::string;
 using std::vector;
@@ -37,6 +39,15 @@ private:
     string content;
 };
 
-typedef vector<unique_ptr<CustomFieldDatum>> CustomFields;
+// A custom field set that manages its own content
+class CustomFieldSet {
+public:
+    CustomFieldSet() { }
+
+    QJsonObject render() const;
+private:
+// disable
+//    vector<unique_ptr<CustomFieldDatum>> content;
+};
 
 #endif /* CUSTOM_FIELDS_HH */

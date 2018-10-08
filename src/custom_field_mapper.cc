@@ -4,26 +4,25 @@
 #include "utility.hh"
 #include "custom_fields.hh"
 
-vector<CustomFieldDatum> CustomFieldMapper::mapCustomFields(const vector<string> excelRow) {
+using column_mapping::CustomFieldSpecification;
+
+CustomFieldSet CustomFieldMapper::mapCustomFields(const vector<string> excelRow) {
     for (auto col: excelRow) {
         std::cout << col << std::endl;
     }
 
-    vector<CustomFieldDatum> result;
-
+    CustomFieldSet result;
 
     // This now becomes a vec->vec transformation with a conditional on 
     // the field encoder enum.
-    for (CustomFieldSpecification s: column_mapping::CUSTOM_FIELDS) {
-        string apiCustomFieldName = iter->first;
-        int rowIndex = iter->second;
-
-        string excelRowContent = excelRow.at(rowIndex);
+    for (CustomFieldSpecification spec: column_mapping::CUSTOM_FIELDS) {
+        string excelRowContent = excelRow.at(spec.position);
         
         if (excelRowContent.empty() || isWhitespaceOnly(excelRowContent))
             continue;
 
-        result.insert({apiCustomFieldName, excelRowContent});
+        // Now need to make_unique and move it to the vector
+//        result.add();
     }
 
     return result;
