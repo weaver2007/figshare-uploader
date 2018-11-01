@@ -45,4 +45,11 @@ TEST(XlsxReaderTest, DateFormattedFieldCanBeTransformedCorrectlyToString) {
     ASSERT_THAT(result.at(column_mapping::DATE), "23/12/18");
 }
 
+TEST(XlsxReaderTest, HandlesEarlierDatesProperly) {
+    XlsxReader foo("resources/test.xlsx");
+    vector<string> result = foo.rowToString(8);
+
+    ASSERT_THAT(result.at(column_mapping::DATE), "28/09/1921");
+}
+
 

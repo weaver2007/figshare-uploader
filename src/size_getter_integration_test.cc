@@ -12,6 +12,6 @@ using std::string;
 TEST(SizeGetterTest, CanGetSize) {
     SizeGetter* getter = new QtSizeGetter;
     int64_t result = getter->getSize("resources/test.xlsx");
-    ASSERT_THAT(result, Eq(9413));
+    ASSERT_THAT(result, Eq(9539));
 }
 
